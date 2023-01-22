@@ -1,12 +1,12 @@
 ## 새로 알게된 JAVA 기능,함수 목록
 ### 1. String 정렬이 없다.
-    -  char 배열로 바꾼 후, Arrays.sort()로 정렬 후, 다시 String으로 변경
-   ```java
-   String str = "CADB"; 
-   char[] chars = str.toCharArray();
-   Arrays.sort(chars);
-   str = new String(chars);
-   ```
+배열 char로 바꾼 후, Arrays.sort()로 정렬 후, 다시 String으로 변경
+```java
+String str = "CADB"; 
+char[] chars = str.toCharArray();
+Arrays.sort(chars);
+str = new String(chars);
+  ```
 ### 2. String은 인스턴스가 상수로 선언되어, 추가 삭제 불가능 -> StringBuilder 사용
 ```java
 StringBuilder sb = new StringBuilder();
@@ -18,7 +18,10 @@ sb.deleteCharAt(2) // 2 위치의 문자 삭제 (→ ac)
 sb.setCharAt(0, 'h') // 0 위치의 문자를 h로 변경 (→ hbc)
 sb.reverse() // 문자열 거꾸로 뒤집기 (→ cba)
 ```
-
+### 3. Char Array를 String으로 출력 -> String.valueOf(ch)
+```java
+String.valueOf(ch);
+```
 ## 자주 까먹는 JAVA 기능,함수
 
 ### 1. MAP의 3가지 종류<br>
@@ -28,7 +31,7 @@ sb.reverse() // 문자열 거꾸로 뒤집기 (→ cba)
    **TreeMap**: <key, value>쌍. 키값이 알파벳순(오름차순)으로 정렬된 상태로 출력됨.<br>
 
 
-### 2. COllection 
+### 2. Collection 
 
 ```java
 import java.utils.Collections
@@ -49,4 +52,3 @@ Collections.frequency(list, 23) // list 내의 23의 갯수 반환
 Collections.binarySearch(list, 44)
 // 최초로 검색된 44의 인덱스 1 반환
 // 없으면 44보다 큰 최초의 위치 2를 찾아서 -1을 곱하고 1을 빼서 반환 (-3)
-```
