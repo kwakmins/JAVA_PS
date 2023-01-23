@@ -7,6 +7,7 @@ char[] chars = str.toCharArray();
 Arrays.sort(chars);
 str = new String(chars);
   ```
+
 ### 2. String은 인스턴스가 상수로 선언되어, 추가 삭제 불가능 -> StringBuilder 사용
 ```java
 StringBuilder sb = new StringBuilder();
@@ -18,10 +19,21 @@ sb.deleteCharAt(2) // 2 위치의 문자 삭제 (→ ac)
 sb.setCharAt(0, 'h') // 0 위치의 문자를 h로 변경 (→ hbc)
 sb.reverse() // 문자열 거꾸로 뒤집기 (→ cba)
 ```
+
 ### 3. Char Array를 String으로 출력 -> String.valueOf(ch)
 ```java
 String.valueOf(ch);
 ```
+
+### 4. String은 래퍼 클래스라서, 연산이 안됨 -> str1.compareTo(str2)
+```java
+return "x">"y"; //(X)
+return "X".compareTo("Y"); //얼마만큼 큰지 리턴 (큰 경우 True 작거나 같은 경우 FALSE)
+-1
+```
+
+----------------------------------------------------------------------
+
 ## 자주 까먹는 JAVA 기능,함수
 
 ### 1. MAP의 3가지 종류<br>
