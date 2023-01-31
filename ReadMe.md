@@ -32,6 +32,8 @@ return "X".compareTo("Y"); //얼마만큼 큰지 리턴 (큰 경우 True 작거�
 -1
 ```
 
+### 5. Arrays.stream(배열) 롤 stream 사용 가능 (자동으로 type mapping)
+
 ----------------------------------------------------------------------
 
 ## 자주 까먹는 JAVA 기능,함수
@@ -64,3 +66,4 @@ Collections.frequency(list, 23) // list 내의 23의 갯수 반환
 Collections.binarySearch(list, 44)
 // 최초로 검색된 44의 인덱스 1 반환
 // 없으면 44보다 큰 최초의 위치 2를 찾아서 -1을 곱하고 1을 빼서 반환 (-3)
+```
