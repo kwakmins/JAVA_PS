@@ -49,6 +49,14 @@ List<String> collect = Arrays.stream(strs)
     .collect(Collectors.toList());
 ```
 
+## 6. String과 int의 배열 <-> List 변환
+```java
+List<Integer> intList = Arrays.stream(intArr).boxed().toList();
+List<String> stringList = Arrays.asList(stringArr);
+
+int[] ints = intList.stream().mapToInt(i -> i).toArray();
+String[] strings = stringList.toArray(new String[100]);
+```
 ----------------------------------------------------------------------
 
 ## 자주 까먹는 JAVA 기능,함수
