@@ -55,7 +55,8 @@ List<Integer> intList = Arrays.stream(intArr).boxed().toList();
 List<String> stringList = Arrays.asList(stringArr);
 
 int[] ints = intList.stream().mapToInt(i -> i).toArray();
-String[] strings = stringList.toArray(new String[100]);
+String[] strings = stringList.toArray(new String[0]); // 0으로 하면 저절로 숫자에 맞게 증가
+string[] strings = stringList.stream().toArray(String[]::new)
 ```
 ----------------------------------------------------------------------
 
