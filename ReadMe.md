@@ -18,6 +18,8 @@ String str = "CADB";
 String[] s = str.split("");
 Array.sort(s,Collection.reverseOrder());
 str = String.join("",s);
+
+// str.split("",-1)을 하면, 빈 문자열도 생성됨
 ```
 
 ### 2. String은 인스턴스가 상수로 선언되어, 추가 삭제 불가능 -> `StringBuilder` 사용
