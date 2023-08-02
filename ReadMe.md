@@ -88,3 +88,8 @@ Collections.binarySearch(list,44)
 // 최초로 검색된 44의 인덱스 1 반환
 // 없으면 44보다 큰 최초의 위치 2를 찾아서 -1을 곱하고 1을 빼서 반환 (-3)
 ```
+---
+## Skill
+### 1. 배열 복사
+- System.arraycopy(origin, 0, key, 0, origin.length); : orgin의 0의 위치부터 origin.length길이 까지 key에 0의 위치부터 복사함
+- Arrays.copyOf(arr,len) : arr의 len만큼 복사 (길이 지정됨)
