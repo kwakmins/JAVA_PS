@@ -5,7 +5,7 @@
 1.1 `.toCharArray()`를 통해 `char[]`로 바꾼 후, `Arrays.sort()`로 정렬 후, 다시 String으로 변경
 
 ```java
-String str = "CADB";
+String ystr = "CADB";
 char[]chars = str.toCharArray();
 Arrays.sort(chars);
 str=new String(chars);
@@ -27,12 +27,14 @@ str = String.join("",s);
 ```java
 StringBuilder sb = new StringBuilder();
 
-sb.append("abc") // 문자열 추가 ;
-sb.insert(2,"kk") // 2 위치에 kk 삽입 (→ abkkc)
-sb.delete(0,2) // 0~1 위치의 문자열 삭제 (→ c)
-sb.deleteCharAt(2) // 2 위치의 문자 삭제 (→ ac)
-sb.setCharAt(0,'h') // 0 위치의 문자를 h로 변경 (→ hbc)
-sb.reverse() // 문자열 거꾸로 뒤집기 (→ cba)
+sb.append("abc"); // 문자열 추가 
+sb.insert(2,"kk"); // 2 위치에 kk 삽입 (→ abkkc)
+sb.delete(0,2); // 0~1 위치의 문자열 삭제 (→ c)
+sb.substring(0,2) // 0~1 위치의 문자열 자르기 (-> ab) (String으로 바뀜)
+sb.deleteCharAt(2); // 2 위치의 문자 삭제 (→ ac)
+sb.replace(0,2,"bc"); // 0~1의 문자열을 다른 문자열로 변경(-> bcc)
+sb.setCharAt(0,'h'); // 0 위치의 문자를 h로 변경 (→ hbc)
+sb.reverse(); // 문자열 거꾸로 뒤집기 (→ cba)
 ```
 
 ### 4. String은 래퍼 클래스라서, 연산이 안됨 -> `str1.compareTo(str2)`
@@ -91,5 +93,7 @@ Collections.binarySearch(list,44)
 ---
 ## Skill
 ### 1. 배열 복사
-- System.arraycopy(origin, 0, key, 0, origin.length); : orgin의 0의 위치부터 origin.length길이 까지 key에 0의 위치부터 복사함
-- Arrays.copyOf(arr,len) : arr의 len만큼 복사 (길이 지정됨)
+```java
+System.arraycopy(origin, 0, key, 0, origin.length); // orgin의 0의 위치부터 origin.length길이 까지 key에 0의 위치부터 복사함 
+Arrays.copyOf(arr,len); // arr의 len만큼 복사 (길이 지정됨)
+```
