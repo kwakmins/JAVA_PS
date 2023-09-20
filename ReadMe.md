@@ -97,3 +97,4 @@ Collections.binarySearch(list,44)
 System.arraycopy(origin, 0, key, 0, origin.length); // orgin의 0의 위치부터 origin.length길이 까지 key에 0의 위치부터 복사함 
 Arrays.copyOf(arr,len); // arr의 len만큼 복사 (길이 지정됨)
 ```
+### 2. Integer.toString(10,2) // "1010"
