@@ -98,3 +98,11 @@ System.arraycopy(origin, 0, key, 0, origin.length); // orgin의 0의 위치부�
 Arrays.copyOf(arr,len); // arr의 len만큼 복사 (길이 지정됨)
 ```
 ### 2. Integer.toString(10,2) // "1010" <br> Integer.parseInt("1010",2) // 10
+
+### 3. string.join("",array or "121","1212"...)
+
+```js
+String requestDate = "2018-03-02";
+String[] requestDateArray = requestDate.split("-");
+System.out.println(String.join("-", requestDateArray));
+```
