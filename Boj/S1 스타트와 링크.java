@@ -4,7 +4,8 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /***
- *
+ *  순열이 아닌 조합일 땐, (반대인 경우가 같음)
+ *  i=idx로 해서 가지치기를 수행하여 시간을 절약
  */
 public class Main {
 
