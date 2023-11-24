@@ -52,7 +52,7 @@ public class Main {
     }
 
     for (int i = index; i < n; i++) {
-      if (visit[i] == 0) {
+      if (visit[i] == 0) { // 없어도 됨
         visit[i] = 1;
         dfs(i + 1, dep + 1);
         visit[i] = 0;

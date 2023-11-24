@@ -15,6 +15,7 @@ import java.util.List;
  * @!!! 지도가 있으면 무조건 이중 배열로 계산하려고 했음. -> 위치 정보를 list에 담아 사용 가능.
  * @!!! 백트래킹은 visit 없이 start+1로 계산을 할 때 있음.
  * @!!! 백트래킹은 이중리스트로 순환 잘 안함.
+ * @!!! 중복 허용에 따라 start or visit을 쓸지 정하는 듯?
  */
 public class Main {
 
