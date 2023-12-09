@@ -12,65 +12,66 @@ import java.util.PriorityQueue;
  * @!!! 다익스트라에 대한 이해도 부족
  * @!!! 임의로 큰 값을 줄 때, 좀 더 크게 주자
  */
+import java.util.*;
+
 class Solution {
-
-  List<Node>[] list;
+  List<Node>[] board;
   int N;
-
   public int solution(int n, int s, int a, int b, int[][] fares) {
     int answer = Integer.MAX_VALUE;
-    list = new List[n + 1];
     N = n;
-    for (int i = 1; i <= n; i++) {
-      list[i] = new ArrayList<>();
+    board = new List[n];
+    for(int i=0;i<n;i++){
+      board[i]=new ArrayList<>();
     }
-    for (int[] i : fares) {
-      list[i[0]].add(new Node(i[1], i[2]));
-      list[i[1]].add(new Node(i[0], i[2]));
+    for(int i=0;i<fares.length;i++){
+      board[fares[i][0]-1].add(new Node(fares[i][1]-1,fares[i][2]));
+      board[fares[i][1]-1].add(new Node(fares[i][0]-1,fares[i][2]));
     }
 
-    int[] aDis = dijk(a);
-    int[] bDis = dijk(b);
-    int[] sDis = dijk(s);
+    int[] aDis = dij(a-1);
+    int[] bDis = dij(b-1);
+    int[] sDis = dij(s-1);
 
-    for (int i = 1; i <= n; i++) {
-      answer = Math.min(answer, sDis[i] + aDis[i] + bDis[i]);
+    for(int i=0;i<n;i++){
+      int temp = sDis[i] + aDis[i] + bDis[i];
+      answer = Math.min(answer,temp);
     }
 
     return answer;
   }
 
-
-  int[] dijk(int start) {
-    int[] dis = new int[N + 1];
-    PriorityQueue<Node> pq = new PriorityQueue<>((a, b) -> a.value - b.value);
-    Arrays.fill(dis, 3000000); //큰값 주자
+  int[] dij(int start){
+    PriorityQueue<Node> pq = new PriorityQueue<>((o1,o2)->o1.value-o2.value);
+    int[] dis = new int[N];
+    for(int i=0;i<N;i++){
+      dis[i] = Integer.MAX_VALUE;
+    }
     dis[start] = 0;
-    pq.add(new Node(start, 0));
+    pq.add(new Node(start,0));
 
-    while (!pq.isEmpty()) {
-      Node temp = pq.poll();
+    while(!pq.isEmpty()){
+      Node node = pq.poll();
 
-      if (dis[temp.idx] < temp.value) {
+      if(dis[node.idx]<node.value){
         continue;
       }
 
-      for (Node x : list[temp.idx]) {
-        if (dis[x.idx] > temp.value + x.value) {
-          dis[x.idx] = temp.value + x.value;
-          pq.add(new Node(x.idx, temp.value + x.value));
+      for(Node n : board[node.idx]){
+        if(dis[n.idx]>node.value+n.value){
+          dis[n.idx] = node.value + n.value;
+          pq.add(new Node(n.idx,dis[n.idx]));
         }
       }
     }
     return dis;
   }
 
-  class Node {
+  class Node{
+    int idx,value;
 
-    int idx, value;
-
-    Node(int x, int y) {
-      idx = x;
+    public Node(int x, int y){
+      idx =x;
       value = y;
     }
   }
