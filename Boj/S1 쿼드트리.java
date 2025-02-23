@@ -2,50 +2,50 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * S1 쿼드트리 - https://www.acmicpc.net/problem/1992
- * 백트래킹 - 데이터 압축하기
- *
- * @!!! 탐색 범위를 잘못잡아 많이 틀렸음. 배열이 있으면 범위는 잘 선정하자
- */
 public class Main {
 
+    static StringBuilder sb = new StringBuilder();
     static String[][] board;
 
     public static void main(String[] args) throws IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String[] line = bf.readLine().split(" ");
-        int N = Integer.parseInt(line[0]);
-
+        int N = Integer.valueOf(br.readLine());
         board = new String[N][N];
         for (int i = 0; i < N; i++) {
-            board[i] = bf.readLine().split("");
+            board[i] = br.readLine().split("");
         }
 
-        quad(0, 0, N);
+        func(0, 0, N);
+        System.out.println(sb);
+    }
+
+    static void func(int startX, int startY, int n) {
+
+        if (n == 1) {
+            sb.append(board[startY][startX]);
+            return;
+        }
+
+        if (valid(startX, startY, n)) {
+            sb.append(board[startY][startX]);
+            return;
+        }
+
+        sb.append("(");
+        func(startX, startY, n / 2);
+        func(startX + n / 2, startY, n / 2);
+        func(startX, startY + n / 2, n / 2);
+        func(startX + n / 2, startY + n / 2, n / 2);
+        sb.append(")");
 
     }
 
-    static void quad(int y, int x, int n) {
+    static boolean valid(int x, int y, int n) {
 
-        if (isAllSame(y, x, n)) {
-            System.out.print(board[y][x]);
-        } else {
-            System.out.print("(");
-            int temp = n / 2;
-            quad(y, x, temp);
-            quad(y, x + temp, temp);
-            quad(y + temp, x, temp);
-            quad(y + temp, x + temp, temp);
-            System.out.print(")");
-        }
-    }
-
-    static boolean isAllSame(int y, int x, int n) {
         String s = board[y][x];
 
-        for (int i = y; i < y + n; i++) { // i=0 으로 해서 엄청 틀렸음
+        for (int i = y; i < y + n; i++) {
             for (int j = x; j < x + n; j++) {
                 if (!board[i][j].equals(s)) {
                     return false;
