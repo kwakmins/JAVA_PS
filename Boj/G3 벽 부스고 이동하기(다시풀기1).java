@@ -41,6 +41,10 @@ public class Main {
             int value = poll[2];
             int broke = poll[3];
 
+            if (x == N - 1 && y == M - 1) {
+                break;
+            }
+
             for (int i = 0; i < 4; i++) {
                 int ax = x + dx[i];
                 int ay = y + dy[i];
