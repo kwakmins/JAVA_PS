@@ -23,16 +23,20 @@ public class Main {
             }
         }
 
-        // 누적합 = 높이가 i 이하일 때 장애물 총 수
+        // 높이가 i 이하인 장애물이 몇개인지 구함
+        // 이는 나중에 누적합을 계산하기 위해서 (높이가 i일 때 부딛히는 장애물 = 총 장애물(높이H) - 높이가 i일 때 안부딛히는 장애물)
         for (int i = 1; i <= H; i++) {
-            up[i] += up[i - 1];
             down[i] += down[i - 1];
+            up[i] += up[i - 1];
         }
 
         int min = Integer.MAX_VALUE;
         int cnt = 0;
         for (int i = 1; i <= H; i++) {
-            int sum = down[H] - down[i - 1] + up[H] - up[H - i]; // 총 장애물 - 안부딛히는 장애물 = 부딛히는 장애물
+
+            // 총 장애물 - 안부딛히는 장애물 = 부딛히는 장애물
+            int sum = down[H] - down[i - 1];
+            sum += up[H] - up[H - i];
 
             if (min == sum) {
                 cnt++;
