@@ -43,13 +43,16 @@ public class Main {
         visit[x] = true;
         dp[x][1] = 1;
 
-        for (int child : list[x]) {
+        for (int child : list[x]) { // 자식 노드
 
             if (!visit[child]) {
-                dfs(child);
-                dp[x][0] += dp[child][1];
-                dp[x][1] += Math.min(dp[child][1], dp[child][0]);
+                dfs(child); // dfs 재귀호출을 통해 자식 노드의 dp값을 미리 구한다.
+                dp[x][0] += dp[child][1]; // 자식 노드가 무조건 얼리어답터여야한다.
+                dp[x][1] += Math.min(dp[child][1], dp[child][0]); // 왜냐하면 최소의 얼리어답터 인원을 뽑기 때문에 자식 노드가 얼리어답터 일수도, 아닐수도 있다.
             }
+        }
+    }
+}
 
 
         }
