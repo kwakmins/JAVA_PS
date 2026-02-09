@@ -48,18 +48,6 @@ public class Main {
             return false;
         }
 
-        if (n - 1 >= 0 && m + 1 < M && visit[n - 1][m] && visit[n][m + 1] && visit[n - 1][m + 1]) {
-            return false;
-        }
-
-        if (n + 1 < N && m - 1 >= 0 && visit[n][m - 1] && visit[n + 1][m - 1] && visit[n + 1][m]) {
-            return false;
-        }
-
-        if (n + 1 < N && m + 1 < M && visit[n + 1][m + 1] && visit[n + 1][m] && visit[n][m + 1]) {
-            return false;
-        }
-
         return true;
     }
 }
